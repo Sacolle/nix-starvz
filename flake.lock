@@ -1,0 +1,44 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1772542754,
+        "narHash": "sha256-WGV2hy+VIeQsYXpsLjdr4GvHv5eECMISX1zKLTedhdg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "8c809a146a140c5c8806f13399592dbcb1bb5dc4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "starvz-src": "starvz-src"
+      }
+    },
+    "starvz-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770805761,
+        "narHash": "sha256-lQTp68fXHdhBmNEk5miKAVSY6GMEgZqmE0Aqrq8QC04=",
+        "owner": "schnorr",
+        "repo": "starvz",
+        "rev": "5d008cb495bbb51fa6eda036c6d6a5207797c174",
+        "type": "github"
+      },
+      "original": {
+        "owner": "schnorr",
+        "repo": "starvz",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
