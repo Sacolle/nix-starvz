@@ -5,7 +5,7 @@ O manual de instalação é [INSTALL.org](https://github.com/schnorr/starvz/blob
 Há uma serie de outras dependências que precisam ser resolvidas antes do compilação final do `starvz`.
 - [x] StarPU (for starpu\_fxt\_tool)
 - [x] fxt
-- [ ] poti (pra que serve essa tool?)
+- [x] poti 
 - [ ] PajeNG (for pj\_dump)
 
 

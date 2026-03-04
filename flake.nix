@@ -32,6 +32,7 @@
 		packages.${system} = {
 			starvz = starvz;
 			default = starvz;
+			poti = pkgs.callPackage ./poti.nix {};
 		};
 	};
 }
