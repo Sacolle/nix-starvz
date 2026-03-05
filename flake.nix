@@ -3,30 +3,23 @@
 
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-		starvz-src = {
+		starpu =  {
 			type = "github";
-			owner = "schnorr";
-			repo = "starvz";
-			# add a specific commit?
-			flake = false;
+			owner = "Sacolle";
+			# will change
+			repo = "nix-starpu-dev";
 		};
 	};
 
-	outputs = { self, nixpkgs, starvz-src }: 
+	outputs = { self, nixpkgs, starpu }: 
 	let
 		system = "x86_64-linux";
-		pkgs = import nixpkgs { inherit system; };
-		starvz = pkgs.stdenv.mkDerivation {
-			pname = "starvz";
-			version = "0.7.1";
-
-			src = starvz-src;
-
-			installPhase = ''
-				mkdir -p $out
-				cp -r $src $out
-			'';
+		StarPU = starpu.packages.${system}.default.override {
+			enableCUDA = false;
+			enableTrace = true;
 		};
+		pkgs = import nixpkgs { inherit system; };
+		starvz = pkgs.callPackage ./starvz.nix { inherit StarPU; };
 	in
 	{
 		packages.${system} = {
@@ -34,6 +27,14 @@
 			default = starvz;
 			poti = pkgs.callPackage ./poti.nix {};
 			pajeng = pkgs.callPackage ./pajeng.nix {};
+
+			devShells.default = pkgs.mkShell {
+				buildInputs = [
+					(pkgs.rWrapper.override {
+						packages = [ starvz ];
+					})
+				];
+			};
 		};
 	};
 }

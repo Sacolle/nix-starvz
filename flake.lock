@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1772542754,
-        "narHash": "sha256-WGV2hy+VIeQsYXpsLjdr4GvHv5eECMISX1zKLTedhdg=",
+        "lastModified": 1772624091,
+        "narHash": "sha256-QKyJ0QGWBn6r0invrMAK8dmJoBYWoOWy7lN+UHzW1jc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8c809a146a140c5c8806f13399592dbcb1bb5dc4",
+        "rev": "80bdc1e5ce51f56b19791b52b2901187931f5353",
         "type": "github"
       },
       "original": {
@@ -16,25 +16,43 @@
         "type": "github"
       }
     },
-    "root": {
-      "inputs": {
-        "nixpkgs": "nixpkgs",
-        "starvz-src": "starvz-src"
-      }
-    },
-    "starvz-src": {
-      "flake": false,
+    "nixpkgs_2": {
       "locked": {
-        "lastModified": 1770805761,
-        "narHash": "sha256-lQTp68fXHdhBmNEk5miKAVSY6GMEgZqmE0Aqrq8QC04=",
-        "owner": "schnorr",
-        "repo": "starvz",
-        "rev": "5d008cb495bbb51fa6eda036c6d6a5207797c174",
+        "lastModified": 1738797219,
+        "narHash": "sha256-KRwX9Z1XavpgeSDVM/THdFd6uH8rNm/6R+7kIbGa+2s=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1da52dd49a127ad74486b135898da2cef8c62665",
         "type": "github"
       },
       "original": {
-        "owner": "schnorr",
-        "repo": "starvz",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1da52dd49a127ad74486b135898da2cef8c62665",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "starpu": "starpu"
+      }
+    },
+    "starpu": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1772553744,
+        "narHash": "sha256-AUyZnDUqTi4KAVQEkVg+j1WOAEHDpKcZ5ULvBwEhngE=",
+        "owner": "Sacolle",
+        "repo": "nix-starpu-dev",
+        "rev": "8bb2f6bf909aa1594b2cf973d98abdaf50aa4e19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sacolle",
+        "repo": "nix-starpu-dev",
         "type": "github"
       }
     }
