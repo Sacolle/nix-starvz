@@ -6,8 +6,7 @@ Há uma serie de outras dependências que precisam ser resolvidas antes do compi
 - [x] StarPU (for starpu\_fxt\_tool)
 - [x] fxt
 - [x] poti 
-- [ ] PajeNG (for pj\_dump)
-
+- [x] PajeNG (for pj\_dump)
 
 Há também o pmtool (optional, for theoretical bounds) (SimGrid, Academic Initiative CPLEX), 
 mas se não for necessário mexer nesse, não irei.

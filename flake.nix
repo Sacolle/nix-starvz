@@ -33,6 +33,7 @@
 			starvz = starvz;
 			default = starvz;
 			poti = pkgs.callPackage ./poti.nix {};
+			pajeng = pkgs.callPackage ./pajeng.nix {};
 		};
 	};
 }
