@@ -16,5 +16,13 @@ sejam eles R ou bash, possam ser executados fora de um dev environment. Para iss
 descobrir como que um projeto Nix sistematicamente envolve scripts de um repo, além de como 
 seria a "instalação".
 
+## Resultados Parciais
 
-Desafio ent
+O pacote em R parece ter sido compilado com sucesso, agora falta a ferramenta de gerar os pdf a 
+partir dos traces.
+
+Atualmente estou usando o ambiente de desenvolvimento, mas tenho um bug que o número de workers
+no trace é maior que configurado na máquina. Acho que vou adicionar essa opção no próprio flake
+do starpu, assim como mudá-lo um pouco. Acho que é benéfico desacoplar o star-fletcher da derivação 
+do fletcher, colocando em repos diferentes.
+
