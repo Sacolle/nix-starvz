@@ -9,37 +9,35 @@
 	outputs = { self, nixpkgs, starpu }: 
 	let
 		system = "x86_64-linux";
-        # –enable-maxcpus=count 
-        # –enable-maxnumanodes=count 
-        # –enable-maxcudadev=count 
 		StarPU = (starpu.packages.${system}.default.override {
 			enableCUDA = false;
 			enableTrace = true;
             extraOptions = [ "--enable-maxcpus=256" ];
 		});
 		pkgs = import nixpkgs { inherit system; };
-		starvz = pkgs.callPackage ./starvz.nix { inherit StarPU; };
+		starvz = pkgs.callPackage ./starvz.nix {};
         poti = pkgs.callPackage ./poti.nix {};
         pajeng = pkgs.callPackage ./pajeng.nix {};
+		starvzTools = pkgs.callPackage ./starvzTools.nix { 
+            inherit StarPU starvz poti pajeng; 
+        };
 	in
 	{
 		packages.${system} = {
 			default = starvz;
-            inherit starvz poti pajeng;
+            inherit starvz starvzTools poti pajeng;
 		};
 
         devShells.${system}.default = pkgs.mkShell {
             buildInputs = [
-                pkgs.recutils
-                pkgs.pkg-config
-                pkgs.zlib
-
-                StarPU
-                poti
-                pajeng
-                (pkgs.rWrapper.override {
-                    packages = [ starvz ];
-                })
+                # pkgs.recutils
+                # pkgs.pkg-config
+                # StarPU
+                starvzTools
+                # pkgs.zlib
+                # poti
+                #pajeng
+                # (pkgs.rWrapper.override { packages = [ starvz]; })
             ];
         };
 	};

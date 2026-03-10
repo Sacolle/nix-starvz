@@ -2,7 +2,7 @@
     lib,
     fetchFromGitHub,
     rPackages,
-    StarPU,
+    # StarPU,
     arrow-cpp,
     pkg-config,
     R
@@ -18,7 +18,9 @@ rPackages.buildRPackage {
     };
     nativeBuildInputs = [ pkg-config R  rPackages.arrow];
 
-    buildInputs = [ arrow-cpp StarPU ];
+    buildInputs = [ arrow-cpp 
+    # StarPU 
+    ];
 
     propagatedBuildInputs = with rPackages; [
         rPackages.arrow
