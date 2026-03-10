@@ -3,12 +3,7 @@
 
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-		starpu =  {
-			type = "github";
-			owner = "Sacolle";
-			# will change
-			repo = "nix-starpu-dev";
-		};
+		starpu.url = "github:Sacolle/nix-starpu";
 	};
 
 	outputs = { self, nixpkgs, starpu }: 
@@ -20,15 +15,8 @@
 		StarPU = (starpu.packages.${system}.default.override {
 			enableCUDA = false;
 			enableTrace = true;
-            # não parece ser necessário
-            # buildMode = "release";
-		}).overrideAttrs (oldAttrs: {
-        configureFlags = (oldAttrs.configureFlags or []) ++ [
-                "--with-maxcpus=256"      # Aumenta o limite de núcleos de CPU
-                # "--with-maxcuda=16"       # Mesmo com enableCUDA=false, defina para o tool aceitar traces com CUDA
-                # "--with-maxnodes=4"       # Importante para máquinas NUMA grandes
-            ];
-        });
+            extraOptions = [ "--enable-maxcpus=256" ];
+		});
 		pkgs = import nixpkgs { inherit system; };
 		starvz = pkgs.callPackage ./starvz.nix { inherit StarPU; };
         poti = pkgs.callPackage ./poti.nix {};
@@ -44,6 +32,7 @@
             buildInputs = [
                 pkgs.recutils
                 pkgs.pkg-config
+                pkgs.zlib
 
                 StarPU
                 poti
