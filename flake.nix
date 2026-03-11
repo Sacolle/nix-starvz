@@ -24,21 +24,8 @@
 	in
 	{
 		packages.${system} = {
-			default = starvz;
+			default = starvzTools;
             inherit starvz starvzTools poti pajeng;
 		};
-
-        devShells.${system}.default = pkgs.mkShell {
-            buildInputs = [
-                # pkgs.recutils
-                # pkgs.pkg-config
-                # StarPU
-                starvzTools
-                # pkgs.zlib
-                # poti
-                #pajeng
-                # (pkgs.rWrapper.override { packages = [ starvz]; })
-            ];
-        };
 	};
 }
