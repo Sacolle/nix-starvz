@@ -3,12 +3,13 @@
 
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+		flake-utils.url = "github:numtide/flake-utils";
 		starpu.url = "github:Sacolle/nix-starpu";
 	};
 
-	outputs = { self, nixpkgs, starpu }: 
+	outputs = { self, nixpkgs, flake-utils, starpu }:
+	flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" ] (system:
 	let
-		system = "x86_64-linux";
 		StarPU = (starpu.packages.${system}.default.override {
 			enableCUDA = false;
 			enableTrace = true;
@@ -23,9 +24,9 @@
         };
 	in
 	{
-		packages.${system} = {
+		packages = {
 			default = starvzTools;
             inherit starvz starvzTools poti pajeng;
 		};
-	};
+	});
 }

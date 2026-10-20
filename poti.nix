@@ -7,7 +7,6 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
     pname = "poti";
-    system = "x86_64-linux";
     version = "5.0";
 
     src = fetchFromGitHub {
